@@ -1,5 +1,6 @@
 MC-pricer/MC-pricer.xcodeproj
-
 /MC-pricer/MC-pricer/call_mc_pricer
+payoff-class/payoff-class/mc_pricer
+payoff-class/payoff-class.xcodeproj
 
 .DS_store
