@@ -11,12 +11,10 @@
 
 class PayOff {
 public:
-    enum OptionType {call, put};
-    PayOff(double Strike, OptionType TheOptionsType);
-    double operator()(double Spot) const;
+    PayOff();
+    virtual double operator()(double Spot) const=0;
+    virtual ~PayOff();
 private:
-    double Strike;
-    OptionType TheOptionsType;
 };
 
 #endif

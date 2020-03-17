@@ -6,6 +6,8 @@
 
 #include "MonteCarloPricer.hpp"
 #include "PayOff.hpp"
+#include "PayOffCall.hpp"
+#include "PayOffPut.hpp"
 #include <iostream>
 using namespace std;
 
@@ -30,25 +32,28 @@ int main() {
     cin>>r;
     cout<<"\nEnter number of paths\n";
     cin>>NumberOfPaths;
+    
+    unsigned long optionType;
+    cout << "\nenter 0 for call, otherwise put ";
+    cin >> optionType;
 
     // giving the user the price of such call and put
-    PayOff callPayOff = PayOff(Strike, PayOff::call);
-    PayOff putPayOff = PayOff(Strike, PayOff::put);
+    PayOff* thePayOffPtr;
     
-    double callPrice = simpleMonteCarloPricer(callPayOff,
+    if(optionType == 0){
+        thePayOffPtr = new PayOffCall(Strike);
+    }else{
+        thePayOffPtr = new PayOffPut(Strike);
+    }
+    
+    double optionPrice = simpleMonteCarloPricer(*thePayOffPtr,
                                               Expiry,
                                               Spot,
                                               Vol,
                                               r,
                                               NumberOfPaths);
-    double putPrice = simpleMonteCarloPricer(putPayOff,
-                                             Expiry,
-                                             Spot,
-                                             Vol,
-                                             r,
-                                             NumberOfPaths);
     
-    cout<<"The prices are:\n"<<"Call: "<<callPrice<<endl<<"Put :"<<putPrice<<endl;
+    cout<<"The price is: "<<optionPrice<<endl;
 
     // give time to the user to read the price
     double tmp;
