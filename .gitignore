@@ -3,5 +3,6 @@ MC-pricer/MC-pricer.xcodeproj
 payoff-class/payoff-class/mc_pricer
 payoff-class/payoff-class.xcodeproj
 vanilla-option-class/vanilla-option-class.xcodeproj
+parameter-class/parameter-class.xcodeproj
 
 .DS_store

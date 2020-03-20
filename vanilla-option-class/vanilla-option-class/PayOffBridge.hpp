@@ -14,7 +14,6 @@ class PayOffBridge
 {
 public:
     PayOffBridge(const PayOff& innerPayOff);
-    
     PayOffBridge(const PayOffBridge& original);
     ~PayOffBridge();
     PayOffBridge& operator=(const PayOffBridge& original);
